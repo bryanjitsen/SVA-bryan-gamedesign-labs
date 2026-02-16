@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://p6f2x0d60pfw"]
+
+[ext_resource type="Texture2D" uid="uid://dpme5uukishwy" path="res://icon.svg" id="1_0e48y"]
+[ext_resource type="Script" uid="uid://cokdj2cd2eq6x" path="res://icon.gd" id="2_epypp"]
+
+[node name="Node2D" type="Node2D" unique_id=1683785807]
+
+[node name="robot" type="Sprite2D" parent="." unique_id=940609007]
+position = Vector2(88, 93)
+texture = ExtResource("1_0e48y")
+script = ExtResource("2_epypp")
+speed = null
+my_name = null
+moving = null
+
+[node name="robot2" type="Sprite2D" parent="." unique_id=978098238]
+modulate = Color(1, 0.1254902, 1, 1)
+position = Vector2(150, 265)
+texture = ExtResource("1_0e48y")
+script = ExtResource("2_epypp")
+speed = null
+my_name = null
+moving = null
+
+[node name="robot3" type="Sprite2D" parent="." unique_id=2059575307]
+modulate = Color(0, 0.9607843, 0.14117648, 1)
+position = Vector2(269, 89)
+texture = ExtResource("1_0e48y")
+script = ExtResource("2_epypp")
+speed = null
+my_name = null
+moving = null
