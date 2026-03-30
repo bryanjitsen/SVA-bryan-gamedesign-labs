@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://dbtq6kq18wg22"]
+
+[ext_resource type="Script" uid="uid://dvuce6pdadlfg" path="res://character_body_3d.gd" id="1_noarx"]
+[ext_resource type="Texture2D" uid="uid://bkmxbinnqvhnt" path="res://NicePng_badminton-racket-png_3219940.png" id="2_a0tk4"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_r3fl7"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jka67"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i5arm"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_wc5p8"]
+
+[sub_resource type="Sky" id="Sky_jsk3o"]
+sky_material = SubResource("PhysicalSkyMaterial_wc5p8")
+
+[sub_resource type="Environment" id="Environment_4arys"]
+background_mode = 2
+background_color = Color(0.123601116, 0.13557282, 0.07894375, 1)
+background_energy_multiplier = 4.4
+sky = SubResource("Sky_jsk3o")
+ambient_light_source = 2
+ambient_light_color = Color(0.5921569, 0.3882353, 0.8980392, 1)
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_6iypd"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tereu"]
+bounce = 0.15
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cdqbm"]
+custom_solver_bias = 0.078
+radius = 1.338
+
+[node name="Node3D" type="Node3D" unique_id=1316742995]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1031758988]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.93602157, 0.22631311, -1.1917346)
+mesh = SubResource("CylinderMesh_r3fl7")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="MeshInstance3D" unique_id=1278888185]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4244578, -0.021766901, 1.842227)
+script = ExtResource("1_noarx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/CharacterBody3D" unique_id=1851253819]
+mesh = SubResource("CapsuleMesh_jka67")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="MeshInstance3D/CharacterBody3D" unique_id=966843334]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/CharacterBody3D" unique_id=747611318]
+shape = SubResource("CapsuleShape3D_i5arm")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="MeshInstance3D" unique_id=1075822274]
+environment = SubResource("Environment_4arys")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="MeshInstance3D/WorldEnvironment" unique_id=1486075044]
+light_energy = 0.608
+light_indirect_energy = 10.333
+
+[node name="SpotLight3D" type="SpotLight3D" parent="MeshInstance3D" unique_id=511075925]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10460234, 0.22539097, 3.4831371)
+light_energy = 5.627
+light_indirect_energy = 6.961
+light_volumetric_fog_energy = 9.0
+light_projector = ExtResource("2_a0tk4")
+spot_range = 5.0461698
+spot_angle = 13.734626
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1127052610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7731606, 0.20454621, 2.5104702)
+attributes = SubResource("CameraAttributesPractical_6iypd")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Camera3D" unique_id=1921907996]
+physics_material_override = SubResource("PhysicsMaterial_tereu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/RigidBody3D" unique_id=17505166]
+shape = SubResource("SphereShape3D_cdqbm")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=918699783]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3548679, -0.9395549, -2.1658075)
+size = Vector3(13.902893, 0.18798828, 7.1430664)
